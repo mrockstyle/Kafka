@@ -1,6 +1,14 @@
 # Kafka Cluster Setup
+- ### Kafka Version:Kafka_2.12-2.3.0 (https://www.apache.org/dyn/closer.cgi?path=/kafka/2.3.0/kafka_2.12-2.3.0.tgz)
+- ### Dependency: JDK11 (8 or later)
+- ### Minimum spec(per node):
+	- Cpu – 2 cores 
+ 	- Memory - 4 GB 
+	- Data disk (/data) – 50 GB
 - ### System Diagram
+
 ![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20cluster.JPG) 
+
 - ### Config hosts
      ```
      $ sudo vi /etc/hosts
