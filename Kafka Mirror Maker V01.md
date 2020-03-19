@@ -3,6 +3,8 @@
 
 - ### Installation Kafka
     - Refer to “Kafka cluster”
+    ![GitHub Logo](mrockstyle/Kafka/Kafka Mirror Maker.JPG)
+    
 - ### Configuration in Kafkanode site2 
     - Create /data/kafkadata/kafka-bin/config/site2producer.properties
         ```
