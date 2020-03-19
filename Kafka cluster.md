@@ -9,7 +9,7 @@
 	- Data disk (/data) – 50 GB
 - ### System Diagram
 
-![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20cluster.JPG) 
+	![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20cluster.JPG) 
 
 - ### Config hosts
      ```
