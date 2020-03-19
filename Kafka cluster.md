@@ -1,6 +1,6 @@
 # Kafka Cluster Setup
 - ### System Diagram
-![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%2cluster.JPG) 
+![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20cluster.JPG) 
 - ### Config hosts
      ```
      $ sudo vi /etc/hosts
