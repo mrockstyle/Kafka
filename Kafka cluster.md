@@ -14,6 +14,7 @@
 - ### Config hosts
      ```
      $ sudo vi /etc/hosts
+     
       <ip1> <hostname1>
       <ip2> <hostname2>
       <ip3> <hostname3>
