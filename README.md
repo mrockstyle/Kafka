@@ -7,7 +7,7 @@
     <ip2> <hostname2>
     <ip3> <hostname3>
      ```
-- ### Create group and user
+- ### Create group and user Kafka
      ```
      $ addgroup kafka
      $ useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
