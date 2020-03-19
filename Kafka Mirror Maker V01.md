@@ -21,7 +21,7 @@
 - ### Operation
     - Start Kafka Mirror Maker  in Kafkanode site2
         ```
-        $ ./kafka-mirror-maker.sh --consumer.config /config/site1consumer.properties --num.streams 2 --producer.config /config/site2producer.properties --whitelist="<topics_mirror>"
+        $ ./kafka-mirror-maker.sh --consumer.config /data/kafkadata/kafka-bin/config/site1consumer.properties --num.streams 2 --producer.config /data/kafkadata/kafka-bin/config/site2producer.properties --whitelist="<topics_mirror>"
 
         ```
 
