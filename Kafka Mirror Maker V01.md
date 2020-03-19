@@ -2,7 +2,7 @@
 - ### System Diagram
 ![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/Kafka%20Mirror%20Maker.JPG)
 - ### Installation Kafka
-    - Refer to [Kafka cluster](http://www.google.com)
+    - Refer to "[Kafka cluster](https://github.com/mrockstyle/Kafka/blob/master/Kafka%20cluster.md)"
 - ### Configuration in Kafkanode site2 
     - Create /data/kafkadata/kafka-bin/config/site2producer.properties
         ```
