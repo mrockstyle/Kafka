@@ -1,6 +1,6 @@
 # Kafka Mirror Maker V.1
-- ### System Diagram:
-    ![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/Kafka%20Mirror%20Maker.JPG)
+- ### System Diagram
+            ![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/Kafka%20Mirror%20Maker.JPG)
 - ### Installation Kafka
     - Refer to “Kafka cluster”
 - ### Configuration in Kafkanode site2 
