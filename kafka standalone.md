@@ -7,7 +7,7 @@
  	- Memory - 4 GB 
 	- Data disk (/data) – 50 GB
 - ### System Diagram
-			![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20standalone.JPG)
+	![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20standalone.JPG)
 
 - ### Config hosts
      ```
