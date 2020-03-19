@@ -1,4 +1,4 @@
-## Kafka Cluster Setup
+# Kafka Cluster Setup
 - ### Config hosts
      ```
      $ sudo vi /etc/hosts
