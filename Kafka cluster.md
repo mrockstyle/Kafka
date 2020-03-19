@@ -1,5 +1,7 @@
 # Kafka Cluster Setup
-- ### Kafka Version: Kafka_2.12-2.3.0 (https://www.apache.org/dyn/closer.cgi?path=/kafka/2.3.0/kafka_2.12-2.3.0.tgz)
+
+- ### Kafka Version: Kafka_2.12-2.3.0 
+	(https://www.apache.org/dyn/closer.cgi?path=/kafka/2.3.0/kafka_2.12-2.3.0.tgz)
 - ### Dependency: JDK11 (8 or later)
 - ### Minimum spec(per node):
 	- Cpu – 2 cores 
