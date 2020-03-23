@@ -11,7 +11,7 @@
 
 	![GitHub ](https://github.com/mrockstyle/Kafka/blob/master/kafka%20cluster.JPG) 
 
-- ### Config hosts
+- ### Config hosts [**user root**]
      ```
      $ sudo vi /etc/hosts
      
@@ -20,39 +20,63 @@
       <ip3> <hostname3>
 	
      ```
-- ### Create group and user Kafka
-     ```
-     $ addgroup kafka
-     $ useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
-     $ echo -e "kafka\nkafka" | passwd kafka
-     $ chage -I -1 -m 0 -M 99999 -E -1 kafka
+- ### Create group and user [**user root**]
+     - ubuntu 
+          ```
+          $ addgroup kafka
+          $ useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
+          $ echo -e "kafka\nkafka" | passwd kafka
+          $ chage -I -1 -m 0 -M 99999 -E -1 kafka
 
-     ```     
-- ###  Export Kafka path [**user kafka**]
-     ```
-     $ vi .bashrc
+          ```     
+     - redhat
+          ```
+          $ groupadd kafka
+          $ useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
+          $ echo -e "kafka\nkafka" | passwd kafka
+          $ chage -I -1 -m 0 -M 99999 -E -1 kafka
 
-          export KAFKA_HOME=/data/kafkadata/kafka-bin
-          export PATH=$PATH:$KAFKA_HOME/bin
+          ```  
+- ### Install Java [**user root**]
+     - ubuntu 
+          ```
+          $ sudo apt-get install openjdk-11-jdk
 
-     $ source .bashrc
+          ```     
+     - redhat
+          ```
+          $ yum install java-11-openjdk
 
-     ```
-- ### Download binary Kafka file [**user kafka**]
-     ```
-    $ cd /data
-    $ wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
+          ```    
+- ### Download binary Kafka file [**user root**]
+     - ubuntu
+          ```
+          $ cd /data
+          $ wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
 
+          ```
+     - redhat 
+          ```
+          $ cd /data
+          $ yum install wget
+          $ yum install nmap-ncat
+          $ wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
+
+          ```
+- ### Create working path [**user root**]
      ```
-- ### Create working path [**user kafka**]
-     ```
+     $ tar -xf kafka_2.12-2.3.0.tgz
      $ mkdir -p /data/kafkadata/kafka-bin
      $ mkdir /data/kafkadata/zookeeper
      $ mkdir /data/kafkadata/kafka-logs
      $ cd /data/kafka_2.12-2.3.0
      $ mv *  /data/kafkadata/kafka-bin
+     $ cd /data
+     $ rm -rf kafka_2.12-2.3.0
+     $ chown -R kafka:kafka kafkadata
 
      ```
+
 - ### Update config [**user kafka**]
      - [path /data/kafkadata/kafka-bin/config]
           ```
@@ -91,14 +115,25 @@
           0 or 1 or 2
 
      ```
-- ### Start Zookeeper [user kafka]
+- ###  Export Kafka path [**user kafka**]
      ```
-     $ ./zookeeper-server-start.sh -daemon /data/kafkadata/kafka-bin/config/zookeeper.properties
+     $ vi .bashrc
+
+          export KAFKA_HOME=/data/kafkadata/kafka-bin
+          export PATH=$PATH:$KAFKA_HOME/bin
+
+     $ source .bashrc
 
      ```
-- ### Start server [user kafka]
+
+- ### Start Zookeeper [**user kafka**]
      ```
-     $ ./kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
+     $ zookeeper-server-start.sh -daemon /data/kafkadata/kafka-bin/config/zookeeper.properties
+
+     ```
+- ### Start server [**user kafka**]
+     ```
+     $ kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
 
      ```
 - ### Check on each node 
