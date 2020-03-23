@@ -106,14 +106,14 @@
      $ source .bashrc
 
      ```
-- ### Start Zookeeper [user kafka]
+- ### Start Zookeeper [**user kafka**]
      ```
-     $ ./zookeeper-server-start.sh -daemon /data/kafkadata/kafka-bin/config/zookeeper.properties
+     $ zookeeper-server-start.sh -daemon /data/kafkadata/kafka-bin/config/zookeeper.properties
 
      ```
-- ### Start server [user kafka]
+- ### Start server [**user kafka**]
      ```
-     $ ./kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
+     $ kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
 
      ```
 - ### Check on each node 
