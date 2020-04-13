@@ -84,6 +84,7 @@
           ```
           ```
           $ vi server.properties
+	  
 	      #update kafka configuration
 	      Broker.id=0 
 	      log.dirs=/data/kafkadata/kafka-logs
