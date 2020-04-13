@@ -85,16 +85,16 @@
           ```
           $ vi server.properties
 
-               #update kafka configuration
-               Broker.id=0 
-               log.dirs=/data/kafkadata/kafka-logs
-	       listeners = PLAINTEXT://<hostname>:9092
-               num.partitions=1
-               log.retention.hours=168
-               offsets.topic.replication.factor=1
-               transaction.state.log.replication.factor=1
-               transaction.state.log.min.isr=1
-               zookeeper.connect=<hostname1>:2181
+		  #update kafka configuration
+		  Broker.id=0 
+		  log.dirs=/data/kafkadata/kafka-logs
+		  listeners = PLAINTEXT://<hostname>:9092
+		  num.partitions=1
+		  log.retention.hours=168
+		  offsets.topic.replication.factor=1
+		  transaction.state.log.replication.factor=1
+		  transaction.state.log.min.isr=1
+		  zookeeper.connect=<hostname1>:2181
 
           ```
 - ###  Export Kafka path [**user kafka**]
