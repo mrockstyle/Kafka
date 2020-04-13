@@ -89,7 +89,7 @@
                Broker.id=0 
                log.dirs=/data/kafkadata/kafka-logs
                num.partitions=1
-	       listeners = PLAINTEXT://<hostname>:9092
+	         listeners = PLAINTEXT://<hostname>:9092
                log.retention.hours=168
                offsets.topic.replication.factor=1
                transaction.state.log.replication.factor=1
