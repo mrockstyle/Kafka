@@ -88,7 +88,7 @@
                #update kafka configuration
                Broker.id=0 
                log.dirs=/data/kafkadata/kafka-logs
-	       listeners = PLAINTEXT://<hostname>:9092
+	          listeners = PLAINTEXT://<hostname>:9092
                num.partitions=1
                log.retention.hours=168
                offsets.topic.replication.factor=1
