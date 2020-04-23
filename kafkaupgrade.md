@@ -9,6 +9,7 @@
     #### Update old config
     - [path /data/kafkadata/kafka-bin/config]
         ```
+	$ cd /data/kafkadata/kafka-bin/config
         $ vi zookeeper.properties
 
             snapshot.trust.empty=true
@@ -17,6 +18,7 @@
     #### Restart zookeeper 
     - [path /data/kafkadata/kafka-bin]
         ```
+	$ cd /data/kafkadata/kafka-bin
         $ bin/zookeeper-server-stop.sh
         $ bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 
@@ -41,6 +43,7 @@
 - ### Update new config [**user kafka**]
     - [path /data/kafkadata/kafka_2.12-2.4.1/config]
         ```
+	$ cd /data/kafkadata/kafka_2.12-2.4.1/config
         $ vi server.properties
 
             inter.broker.protocol.version=2.3.0
@@ -51,6 +54,7 @@
     #### Stop server and zookeeper
     - [path /data/kafkadata/kafka-bin]
         ```
+	$ cd /data/kafkadata/kafka-bin
         $ bin/kafka-server-stop.sh
         $ bin/zookeeper-server-stop.sh
 
@@ -58,6 +62,7 @@
     #### Change new version 
     - [path /data/kafkadata]
         ```
+	$ cd /data/kafkadata
         $ mv kafka-bin kafka-bin-bac
         $ mv kafka_2.12-2.4.1 kafka-bin
 
@@ -65,6 +70,7 @@
     #### Start server and zookeeper
     - [path /data/kafkadata/kafka-bin]
         ```
+	$ cd /data/kafkadata/kafka-bin
         $ bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
         $ bin/kafka-server-start.sh -daemon config/server.properties
 
@@ -73,6 +79,7 @@
     #### Update new config
     - [path /data/kafkadata/kafka-bin/config]
         ```
+	$ cd /data/kafkadata/kafka-bin/config
         $ vi server.properties
 
             inter.broker.protocol.version=2.4.1
@@ -81,6 +88,7 @@
     #### Restart server
     - [path /data/kafkadata/kafka-bin]
         ```
+	$ cd /data/kafkadata/kafka-bin
         $ bin/kafka-server-stop.sh
         $ bin/kafka-server-start.sh -daemon config/server.properties
 
