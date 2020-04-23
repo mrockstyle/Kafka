@@ -3,6 +3,7 @@
 - ### Kafka Version: Kafka_2.12-2.4.1 
 	(https://www.apache.org/dyn/closer.cgi?path=/kafka/2.4.1/kafka_2.12-2.4.1.tgz)
 
+- ### ทำทุกขั้นตอนให้ครบทั้ง 3 broker ก่อนทำขั้นตอนถัดไป
 
 - ### Update old config and restart zookeeper [**user kafka**]
     #### Update old config
