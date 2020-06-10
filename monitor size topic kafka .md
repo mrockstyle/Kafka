@@ -24,7 +24,7 @@
     tag_keys = [ "dudir" ]
 
     ```
-- ### Reload service telegraf
+- ### Reload config telegraf
     ```
     service telegraf reload
     ```
