@@ -23,64 +23,64 @@
 - ### Create group and user [**user root**]
      - ubuntu 
           ```
-          $ addgroup kafka
-          $ useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
-          $ echo -e "kafka\nkafka" | passwd kafka
-          $ chage -I -1 -m 0 -M 99999 -E -1 kafka
+           addgroup kafka
+           useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
+           echo -e "kafka\nkafka" | passwd kafka
+           chage -I -1 -m 0 -M 99999 -E -1 kafka
 
           ```     
      - redhat
           ```
-          $ groupadd kafka
-          $ useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
-          $ echo -e "kafka\nkafka" | passwd kafka
-          $ chage -I -1 -m 0 -M 99999 -E -1 kafka
+           groupadd kafka
+           useradd kafka -u 3041 -s /bin/bash -m -d /home/kafka -g kafka
+           echo -e "kafka\nkafka" | passwd kafka
+           chage -I -1 -m 0 -M 99999 -E -1 kafka
 
           ```  
 - ### Install Java [**user root**]
      - ubuntu 
           ```
-          $ sudo apt-get install openjdk-11-jdk
+           sudo apt-get install openjdk-11-jdk
 
           ```     
      - redhat
           ```
-          $ yum install java-11-openjdk
+           yum install java-11-openjdk
 
           ```    
 - ### Download binary Kafka file [**user root**]
      - ubuntu
           ```
-          $ cd /data
-          $ wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
+           cd /data
+           wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
 
           ```
      - redhat 
           ```
-          $ cd /data
-          $ yum install wget
-          $ yum install nmap-ncat
-          $ wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
+           cd /data
+           yum install wget
+           yum install nmap-ncat
+           wget https://www-eu.apache.org/dist/kafka/2.3.0/kafka_2.12-2.3.0.tgz
 
           ```
 - ### Create working path [**user root**]
      ```
-     $ tar -xf kafka_2.12-2.3.0.tgz
-     $ mkdir -p /data/kafkadata/kafka-bin
-     $ mkdir /data/kafkadata/zookeeper
-     $ mkdir /data/kafkadata/kafka-logs
-     $ cd /data/kafka_2.12-2.3.0
-     $ mv *  /data/kafkadata/kafka-bin
-     $ cd /data
-     $ rm -rf kafka_2.12-2.3.0
-     $ chown -R kafka:kafka kafkadata
+      tar -xf kafka_2.12-2.3.0.tgz
+      mkdir -p /data/kafkadata/kafka-bin
+      mkdir /data/kafkadata/zookeeper
+      mkdir /data/kafkadata/kafka-logs
+      cd /data/kafka_2.12-2.3.0
+      mv *  /data/kafkadata/kafka-bin
+      cd /data
+      rm -rf kafka_2.12-2.3.0
+      chown -R kafka:kafka kafkadata
 
      ```
 
 - ### Update config [**user kafka**]
      - [path /data/kafkadata/kafka-bin/config]
           ```
-          $ vi zookeeper.properties
+           vi zookeeper.properties
 
                # change zookeeper working path
                dataDir=/data/kafkadata/zookeeper
@@ -93,7 +93,7 @@
 
           ```
           ```
-           $ vi server.properties
+            vi server.properties
 
                #update kafka configuration
                Broker.id=0 or 1 or 2
@@ -109,44 +109,44 @@
           ```
 - ###  Create myid [**user kafka**]
      ```
-     $ cd /data/kafkadata/zookeeper
-     $ vi myid
+      cd /data/kafkadata/zookeeper
+      vi myid
 
           0 or 1 or 2
 
      ```
 - ###  Export Kafka path [**user kafka**]
      ```
-     $ vi .bashrc
+      vi .bashrc
 
           export KAFKA_HOME=/data/kafkadata/kafka-bin
           export PATH=$PATH:$KAFKA_HOME/bin
 
-     $ source .bashrc
+      source .bashrc
 
      ```
 
 - ### Start Zookeeper [**user kafka**]
      ```
-     $ zookeeper-server-start.sh -daemon /data/kafkadata/kafka-bin/config/zookeeper.properties
+      zookeeper-server-start.sh -daemon /data/kafkadata/kafka-bin/config/zookeeper.properties
 
      ```
 - ### Start server [**user kafka**]
      ```
-     $ kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
+      kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
 
      ```
 - ### Check on each node 
      - Check leader node
           ```
-          $ echo stat |nc <hostname1> 2181|grep Mode
-	     $ echo stat |nc <hostname2> 2181|grep Mode
-		$ echo stat |nc <hostname3> 2181|grep Mode
+           echo stat |nc <hostname1> 2181|grep Mode
+	      echo stat |nc <hostname2> 2181|grep Mode
+		 echo stat |nc <hostname3> 2181|grep Mode
 
           ```
      - On zookeeper leader node
           ```
-          $ echo mntr | nc <leader node> 2181|grep follower
+           echo mntr | nc <leader node> 2181|grep follower
 
           ```
           Must have 2 zk_followers and 2 zk_synced_followers
