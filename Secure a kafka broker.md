@@ -1,6 +1,6 @@
 # Secure a kafka broker on Datalake Prod.
 ## User: kafka
-#### Note : gsb-lake-prd-mq01, gsb-lake-prd-mq02, gsb-lake-prd-mq03
+#### Note : Repeat all steps in gsb-lake-prd-mq01, gsb-lake-prd-mq02, gsb-lake-prd-mq03
 - ### Export KAFKA_ZOOKEEPER_CONNECT
 ```
 echo 'export KAFKA_ZOOKEEPER_CONNECT="gsb-lake-prd-mq01:2181"' >> $HOME/.bashrc
