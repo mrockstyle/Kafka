@@ -9,3 +9,4 @@
     - ### [Kafka_command ](https://github.com/mrockstyle/Kafka/blob/master/kafka-command.md)
     - ### [Monitor size topic kafka](https://github.com/mrockstyle/Kafka/blob/master/monitor%20size%20topic%20kafka%20.md)
     - ### [Secure a kafka broker on Datalake Prod.](https://github.com/mrockstyle/Kafka/blob/master/Secure%20a%20kafka%20broker.md)
+    - ### [Kafka_2.12-2.5.0 Cluster setup by shell script](https://github.com/mrockstyle/Kafka/blob/master/Setup%20Kafka%20Cluster%20by%20shell%20script.md)
