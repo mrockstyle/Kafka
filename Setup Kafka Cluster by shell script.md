@@ -3,7 +3,7 @@
 ```
 wget -O /data/kafka_2.12-2.5.0.tgz https://www-eu.apache.org/dist/kafka/2.5.0/kafka_2.12-2.5.0.tgz
 ```
-### *** If you disconnect to internrt. You can scp flie to path /data
+### *** If you disconnect to internet. You can scp flie to path /data
 
 ## 2. Install Java
 - ubuntu 
