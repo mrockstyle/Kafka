@@ -19,9 +19,9 @@ mv  /data/jolokia-agent.jar /data/kafkadata/kafka-bin/libs
 sed -i "s/exec \$base_dir\/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"//g" /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 echo "export JMX_PORT=9999" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 echo "export RMI_HOSTNAME=${myhostname}" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
-echo "export KAFKA_JMX_OPTS=\"-javaagent:\/data\/kafkadata\/kafka-bin\/libs\/jolokia-agent.jar=port=8778,host=\$RMI_HOSTNAME -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=\$RMI_HOSTNAME -Dcom.sun.management.jmxremote.rmi.port=\$JMX_PORT\"
+echo "export KAFKA_JMX_OPTS=\"-javaagent:/data/kafkadata/kafka-bin/libs/jolokia-agent.jar=port=8778,host=\$RMI_HOSTNAME -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=\$RMI_HOSTNAME -Dcom.sun.management.jmxremote.rmi.port=\$JMX_PORT\"
 " >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
-echo "exec \$base_dir\/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
+echo "exec \$base_dir/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 ### Restart Kafka service
 /data/kafkadata/kafka-bin/bin/kafka-server-stop.sh
 sleep 5
@@ -32,7 +32,7 @@ curl http://${myhostname}:8778/jolokia/version
 echo "## Read JMX metrics through Jolokia" > /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo " [[inputs.jolokia2_agent]]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## An array of Kafka servers URI to gather stats." >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
-echo "   urls = [\"http:// <host name>>:8778/jolokia\"]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
+echo "   urls = [\"http://${myhostname}:8778/jolokia\"]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   name_prefix = \"kafka.\"" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## List of metrics collected on above servers" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## Each metric consists of a name, a jmx path and" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
@@ -66,8 +66,8 @@ echo "     mbean  = \"kafka.controller:type=KafkaController,name=ActiveControlle
 for TOPIC in ${mytopic}
 do
    echo "   [[inputs.jolokia2_agent.metric]]">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
-   echo "     name = \"BrokerTopicMetrics-\${TOPIC}\"">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
-   echo "     mbean  = \"kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec,topic=\${TOPIC}\"">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
+   echo "     name = \"BrokerTopicMetrics-${TOPIC}\"">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
+   echo "     mbean  = \"kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec,topic=${TOPIC}\"">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 done
 ```
 ```bash
