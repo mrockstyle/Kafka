@@ -10,7 +10,7 @@ vi setup_monitor_kafka.sh
 ```
 ```bash
 #!/bin/bash
-read -p  "Enter your hostname : " myhostname
+read -p  "Enter your ip : " myip
 echo "Input topic Ex. topic1 topic2 topic3 topic4 "
 read -p  "Enter your topic : " mytopic
 ###mv jar file
@@ -19,7 +19,7 @@ mv  /data/jolokia-agent.jar /data/kafkadata/kafka-bin/libs
 ###Configure Kafka 
 sed -i "s/exec \$base_dir\/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"//g" /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 echo "export JMX_PORT=9999" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
-echo "export RMI_HOSTNAME=${myhostname}" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
+echo "export RMI_HOSTNAME=${myip}" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 echo "export KAFKA_JMX_OPTS=\"-javaagent:/data/kafkadata/kafka-bin/libs/jolokia-agent.jar=port=8778,host=\$RMI_HOSTNAME -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=\$RMI_HOSTNAME -Dcom.sun.management.jmxremote.rmi.port=\$JMX_PORT\"
 " >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 echo "exec \$base_dir/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
@@ -28,12 +28,12 @@ echo "exec \$base_dir/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"" >> /d
 sleep 5
 /data/kafkadata/kafka-bin/bin/kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
 ###Check jolokia
-curl http://${myhostname}:8778/jolokia/version
+curl http://${myip}:8778/jolokia/version
 ###Config telegraf
 echo "## Read JMX metrics through Jolokia" > /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo " [[inputs.jolokia2_agent]]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## An array of Kafka servers URI to gather stats." >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
-echo "   urls = [\"http://${myhostname}:8778/jolokia\"]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
+echo "   urls = [\"http://${myip}:8778/jolokia\"]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   name_prefix = \"kafka.\"" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## List of metrics collected on above servers" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## Each metric consists of a name, a jmx path and" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
