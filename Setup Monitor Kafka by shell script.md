@@ -11,9 +11,10 @@ vi setup_monitor_kafka.sh
 ```bash
 #!/bin/bash
 read -p  "Enter your hostname : " myhostname
-echo "Input topic Ex. \"topic1 topic2 topic3 topic4\""
+echo "Input topic Ex. topic1 topic2 topic3 topic4 "
 read -p  "Enter your topic : " mytopic
 ###mv jar file
+chown kafka:kafka /data/jolokia-agent.jar
 mv  /data/jolokia-agent.jar /data/kafkadata/kafka-bin/libs
 ###Configure Kafka 
 sed -i "s/exec \$base_dir\/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"//g" /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
