@@ -30,6 +30,12 @@ echo "kafka" | su - kafka -c "/data/kafkadata/kafka-bin/bin/kafka-server-start.s
 ###Check jolokia
 curl http://${myip}:8778/jolokia/version
 ###Config telegraf
+echo "[[inputs.httpjson]]" > /etc/telegraf/telegraf.d/zookeeper.conf
+echo "  name = \"zookeeper.monitor\"" >> /etc/telegraf/telegraf.d/zookeeper.conf
+echo "  servers = [\"http://${myip}:8080/commands/monitor\"]" >> /etc/telegraf/telegraf.d/zookeeper.conf
+echo "  response_timeout = \"5s\"" >> /etc/telegraf/telegraf.d/zookeeper.conf
+echo "  method = \"GET\"" >> /etc/telegraf/telegraf.d/zookeeper.conf
+
 echo "## Read JMX metrics through Jolokia" > /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo " [[inputs.jolokia2_agent]]" >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 echo "   ## An array of Kafka servers URI to gather stats." >> /etc/telegraf/telegraf.d/jolokia-kafka.conf
