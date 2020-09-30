@@ -24,9 +24,9 @@ echo "export KAFKA_JMX_OPTS=\"-javaagent:/data/kafkadata/kafka-bin/libs/jolokia-
 " >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 echo "exec \$base_dir/kafka-run-class.sh \$EXTRA_ARGS kafka.Kafka \"\$@\"" >> /data/kafkadata/kafka-bin/bin/kafka-server-start.sh
 ### Restart Kafka service
-/data/kafkadata/kafka-bin/bin/kafka-server-stop.sh
+echo "kafka" | su - kafka -c "data/kafkadata/kafka-bin/bin/kafka-server-stop.sh"
 sleep 5
-/data/kafkadata/kafka-bin/bin/kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties
+echo "kafka" | su - kafka -c "/data/kafkadata/kafka-bin/bin/kafka-server-start.sh -daemon /data/kafkadata/kafka-bin/config/server.properties"
 ###Check jolokia
 curl http://${myip}:8778/jolokia/version
 ###Config telegraf
