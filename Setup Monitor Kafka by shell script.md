@@ -82,5 +82,5 @@ chmod +x setup_monitor_kafka.sh
 ```
 ## 3. Reload telegraf
 ```bash
-service telegraf reload
+service telegraf restart
 ```
