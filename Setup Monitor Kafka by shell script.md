@@ -76,6 +76,8 @@ do
    echo "     name = \"BrokerTopicMetrics-${TOPIC}\"">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
    echo "     mbean  = \"kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec,topic=${TOPIC}\"">> /etc/telegraf/telegraf.d/jolokia-kafka.conf
 done
+chmod 666 /etc/telegraf/telegraf.d/jolokia-kafka.conf
+chmod 666 /etc/telegraf/telegraf.d/zookeeper.conf
 ```
 ```bash
 chmod +x setup_monitor_kafka.sh
