@@ -113,7 +113,7 @@ sudo systemctl status rc-local
 ```
 - ### redhat[user root]
 ```
-vi setup_kafka_cluster_redhat.sh
+vi /data/setup_kafka_cluster_redhat.sh
 ```
 ```
 #!/bin/bash
@@ -176,9 +176,10 @@ chown kafka:kafka /home/kafka/start-kafka-server.sh
 echo "Done"
 ```
 ```
-chmod +x setup_kafka_cluster_redhat.sh
+chmod +x /data/setup_kafka_cluster_redhat.sh
 ```
 ```
+cd /data/
 ./setup_kafka_cluster_redhat.sh
 ```
 ```
